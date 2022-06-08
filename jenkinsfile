@@ -10,7 +10,7 @@ pipeline {
     stage("Test") {
       agent {
           docker {
-            image 'python:3.8-s/lim-buster'
+            image 'demisto/python3'
             args '-u 0:0 -v /d/Docker/testjenkins:/root/.cache'
           }
       }
