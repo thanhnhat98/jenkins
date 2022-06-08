@@ -3,24 +3,8 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "nhtua/flask-docker"
+    DOCKER_IMAGE = "corkemmint/jenkins"
   }
-
-  stages {
-    stage("Test") {
-      agent {
-          docker {
-            image 'demisto/python3'
-            args '-u 0:0 -v /d/Docker/testjenkins:/root/.cache'
-          }
-      }
-      steps {
-        sh "pip install poetry"
-        sh "poetry install"
-        sh "poetry run pytest"
-      }
-    }
-
     stage("build") {
       agent { node {label 'master'}}
       environment {
